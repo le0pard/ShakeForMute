@@ -9,20 +9,24 @@ import android.util.Log;
 
 public class MutePhoneStateListener extends PhoneStateListener {
 	private Context myContext;
-	private Intent myIntent;
+	private SensorsMonitor mySensorsMonitor;
 	
-	public MutePhoneStateListener(Context context, Intent intent){
+	public MutePhoneStateListener(Context context, SensorsMonitor sensorsMonitor){
 		this.myContext = context;
-		this.myIntent = myIntent;
+		this.mySensorsMonitor = sensorsMonitor;
 	}
 	
 	public void onCallStateChanged(int state, String incomingNumber){
 		switch(state){
 	    	case TelephonyManager.CALL_STATE_RINGING:
-	    		Log.d("DEBUG", "RINGING");
-	    		AudioManager audioMan = (AudioManager) this.myContext.getSystemService(Context.AUDIO_SERVICE);
-	    		audioMan.adjustStreamVolume(AudioManager.STREAM_RING, AudioManager.ADJUST_LOWER, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+	    		this.mySensorsMonitor.resumeSensors();
 	    		break;
+	    	case TelephonyManager.CALL_STATE_OFFHOOK:
+	    	case TelephonyManager.CALL_STATE_IDLE:
+	    		this.mySensorsMonitor.pauseSensors();
+	    		break;
+	    	default:
+	    		this.mySensorsMonitor.pauseSensors();
 	    }
 	}
 	

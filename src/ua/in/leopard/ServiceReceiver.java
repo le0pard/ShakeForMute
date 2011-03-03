@@ -10,7 +10,8 @@ public class ServiceReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		MutePhoneStateListener phoneListener=new MutePhoneStateListener(context, intent);
+		SensorsMonitor sensorMonitor = new SensorsMonitor(context);
+		MutePhoneStateListener phoneListener = new MutePhoneStateListener(context, sensorMonitor);
 		TelephonyManager telephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 	    telephony.listen(phoneListener, PhoneStateListener.LISTEN_CALL_STATE);
 	}
