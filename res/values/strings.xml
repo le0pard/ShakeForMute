@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ShakeForMute</string>
+    
+    <string name="ok_button">Ok</string>
+    <string name="cancel_button">Cancel</string>
+    
+    <string name="calibrate_help_title">Information</string>
+    <string name="calibrate_help_msg">ShakeForMute</string>
+    
+    <string name="calibrate_dialog_title">Information</string>
+    <string name="calibrate_dialog_message">ShakeForMute</string>
 </resources>
