@@ -76,28 +76,39 @@ public class ShakeForMute extends Activity implements OnClickListener {
 	}
 	
 	private void startCalibration(){
-		final Context currentContext = this;
-		new AlertDialog.Builder(this)
-		.setTitle(getString(R.string.calibrate_help_title))
-		.setMessage(getString(R.string.calibrate_help_msg))
-		.setNeutralButton(getString(R.string.ok_button), new DialogInterface.OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-		        calibrateTask = new CalibrateTask(currentContext);
-				calibrateTask.execute();
-			}
-
-		})
-		.setOnCancelListener(new DialogInterface.OnCancelListener() {
-
-			@Override
-			public void onCancel(DialogInterface dialog) {
-				// do nothing – it will close on its own
-			}
-			
-		})
-		.show();
+		if (!mySettings.getShowCalibrateHelp()){
+			new AlertDialog.Builder(this)
+			.setTitle(getString(R.string.calibrate_help_title))
+			.setMessage(getString(R.string.calibrate_help_msg))
+			.setNeutralButton(getString(R.string.ok_button), new DialogInterface.OnClickListener() {
+	
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					taskCalibration();
+				}
+	
+			})
+			.setOnCancelListener(new DialogInterface.OnCancelListener() {
+	
+				@Override
+				public void onCancel(DialogInterface dialog) {
+					// do nothing – it will close on its own
+				}
+				
+			})
+			.show();
+			mySettings.setShowCalibrateHelp(true);
+		} else {
+			taskCalibration();
+		}
+	}
+	
+	private void taskCalibration(){
+		if(calibrateTask == null || 
+				(calibrateTask != null && calibrateTask.getStatus() == AsyncTask.Status.FINISHED)) {
+			calibrateTask = new CalibrateTask(this);
+			calibrateTask.execute();
+		}
 	}
 	
 	private void updateView(){

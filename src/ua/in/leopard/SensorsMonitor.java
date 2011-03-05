@@ -14,7 +14,6 @@ public class SensorsMonitor implements SensorEventListener {
 	private SensorManager mSensorManager;
 	private final Sensor mAccelerometer;
 	private Context myContext;
-	private Boolean isWorking = false;
 	private AudioManager audioMan;
 	private Boolean isMutted = false;
 	
@@ -26,7 +25,6 @@ public class SensorsMonitor implements SensorEventListener {
 		this.myContext = context;
 		mSensorManager = (SensorManager) this.myContext.getSystemService(Context.SENSOR_SERVICE);
 		mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-		mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 		audioMan = (AudioManager) this.myContext.getSystemService(Context.AUDIO_SERVICE);
 	}
 
@@ -37,7 +35,7 @@ public class SensorsMonitor implements SensorEventListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (Settings.getOnOffStatus(this.myContext) && isWorking){
+		if (Settings.getOnOffStatus(this.myContext)){
 			synchronized (this) {
 		        switch (event.sensor.getType()){
 		            case Sensor.TYPE_ACCELEROMETER:
@@ -64,25 +62,28 @@ public class SensorsMonitor implements SensorEventListener {
 	
 	private void muteVolume(){
 		if (!isMutted){
-			//audioMan.adjustStreamVolume(AudioManager.STREAM_RING, AudioManager.ADJUST_LOWER, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
-			audioMan.setStreamMute(AudioManager.STREAM_RING, true);
+			if (Settings.getVirbation(this.myContext)){
+				audioMan.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+			} else {
+				audioMan.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+			}
 			isMutted = true;
 		}
 	}
 	
 	private void unmuteVolume(){
 		if (isMutted){
-			audioMan.setStreamMute(AudioManager.STREAM_RING, false);
+			audioMan.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 			isMutted = false;
 		}
 	}
 	
 	public void resumeSensors(){
-		isWorking = true;
+		mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 	}
 	
 	public void pauseSensors(){
-		isWorking = false;
+		mSensorManager.unregisterListener(this);
 		this.unmuteVolume();
 	}
 

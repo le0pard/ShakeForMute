@@ -40,7 +40,8 @@ public class CalibrateTask extends AsyncTask<Void, String, Void> {
 		float newCalibrateValue = calibrateSens.getMaxShake();
 		if (newCalibrateValue > 500){
 			Settings mySettings = new Settings(this.myContext);
-			int newValue = (int)(newCalibrateValue - 100);
+			int resVal = (int)(newCalibrateValue / 1000);
+			int newValue = (int)(newCalibrateValue - resVal * 100);
 			mySettings.setShakeThreshold(newValue);
 		}
 		

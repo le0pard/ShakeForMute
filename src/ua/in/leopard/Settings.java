@@ -7,9 +7,11 @@ import android.preference.PreferenceManager;
 public class Settings {
 	private SharedPreferences prefs;
 	private static final String OPT_ON_OFF = "on_off";
-	private static final Boolean OPT_ON_OFF_DEF = false;
+	private static final boolean OPT_ON_OFF_DEF = false;
 	private static final String OPT_SHAKE_THRESHOLD = "shake_threshold";
 	private static final int OPT_SHAKE_THRESHOLD_DEF = 800;
+	private static final String OPT_VIBRATION = "vibration";
+	private static final boolean OPT_VIBRATION_DEF = true;
 	
 	private static final String OPT_SHOW_CALIBRATE_HELP = "is_show_calibrate_help";
 	private static final Boolean OPT_SHOW_CALIBRATE_HELP_DEF = false;
@@ -55,6 +57,23 @@ public class Settings {
 	   return PreferenceManager.getDefaultSharedPreferences(context).getInt(OPT_SHAKE_THRESHOLD, OPT_SHAKE_THRESHOLD_DEF);
     }
 	
+	public void setVirbation(Boolean status){
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putBoolean(OPT_VIBRATION, status);
+		editor.commit();
+	}
+	
+	public Boolean getVirbation() {
+	   return prefs.getBoolean(OPT_VIBRATION, OPT_VIBRATION_DEF);
+    }
+	
+	public static Boolean getVirbation(Context context) {
+	   return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(OPT_VIBRATION, OPT_VIBRATION_DEF);
+    }
+	
+	
+	
+	
 	public void setShowCalibrateHelp(Boolean status){
 		SharedPreferences.Editor editor = prefs.edit();
 		editor.putBoolean(OPT_SHOW_CALIBRATE_HELP, status);
@@ -68,4 +87,5 @@ public class Settings {
 	public static Boolean getShowCalibrateHelp(Context context) {
 	   return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(OPT_SHOW_CALIBRATE_HELP, OPT_SHOW_CALIBRATE_HELP_DEF);
     }
+	
 }
