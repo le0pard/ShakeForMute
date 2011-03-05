@@ -65,8 +65,8 @@ public class SensorsMonitor implements SensorEventListener {
 	
 	private void muteVolume(){
 		if (!isMutted){
-			audioMan.setStreamMute(AudioManager.STREAM_RING, true);
 			//audioMan.adjustStreamVolume(AudioManager.STREAM_RING, AudioManager.ADJUST_LOWER, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+			audioMan.setStreamMute(AudioManager.STREAM_RING, true);
 			isMutted = true;
 		}
 	}
