@@ -10,11 +10,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 public class ShakeForMute extends Activity implements OnClickListener {
 	private Settings mySettings;
 	private Button onOffButton, calibrateButton;
 	private CalibrateTask calibrateTask;
+	private CheckBox vibrateCheckbox;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class ShakeForMute extends Activity implements OnClickListener {
         onOffButton.setOnClickListener(this);
         calibrateButton = (Button) findViewById(R.id.calibrate_button);
         calibrateButton.setOnClickListener(this);
+        vibrateCheckbox = (CheckBox) findViewById(R.id.vibrate_checkbox);
+        vibrateCheckbox.setOnClickListener(this);
         
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
     }
@@ -71,6 +75,9 @@ public class ShakeForMute extends Activity implements OnClickListener {
 	         break;
 		  case R.id.calibrate_button:
 			 startCalibration();
+	         break;
+		  case R.id.vibrate_checkbox:
+			 mySettings.setVirbation(((CheckBox) v).isChecked());
 	         break;
 		}
 	}
@@ -118,5 +125,6 @@ public class ShakeForMute extends Activity implements OnClickListener {
         	onOffButton.setText("off");
         }
 		calibrateButton.setText(Integer.toString(mySettings.getShakeThreshold()));
+		vibrateCheckbox.setChecked(mySettings.getVirbation());
 	}
 }
