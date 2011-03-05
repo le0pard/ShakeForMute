@@ -71,16 +71,20 @@ public class SensorsMonitor implements SensorEventListener {
 		}
 	}
 	
+	private void unmuteVolume(){
+		if (isMutted){
+			audioMan.setStreamMute(AudioManager.STREAM_RING, false);
+			isMutted = false;
+		}
+	}
+	
 	public void resumeSensors(){
 		isWorking = true;
 	}
 	
 	public void pauseSensors(){
 		isWorking = false;
-		if (isMutted){
-			audioMan.setStreamMute(AudioManager.STREAM_RING, false);
-			isMutted = false;
-		}
+		this.unmuteVolume();
 	}
 
 }
