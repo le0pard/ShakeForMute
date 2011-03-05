@@ -15,6 +15,8 @@ public class SensorsMonitor implements SensorEventListener {
 	private final Sensor mAccelerometer;
 	private Context myContext;
 	private Boolean isWorking = false;
+	private AudioManager audioMan;
+	private Boolean isMutted = false;
 	
 	private long lastUpdate = -1;
 	private float x, y, z;
@@ -26,6 +28,7 @@ public class SensorsMonitor implements SensorEventListener {
 		mSensorManager = (SensorManager) this.myContext.getSystemService(Context.SENSOR_SERVICE);
 		mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+		audioMan = (AudioManager) this.myContext.getSystemService(Context.AUDIO_SERVICE);
 	}
 
 	@Override
@@ -48,8 +51,7 @@ public class SensorsMonitor implements SensorEventListener {
 							z = event.values[SensorManager.DATA_Z];
 							float speed = Math.abs(x + y + z - last_x - last_y - last_z)/ diffTime * 10000;
 							if (speed > SHAKE_THRESHOLD) {
-								AudioManager audioMan = (AudioManager) this.myContext.getSystemService(Context.AUDIO_SERVICE);
-					    		audioMan.adjustStreamVolume(AudioManager.STREAM_RING, AudioManager.ADJUST_LOWER, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+					    		this.muteVolume();
 							}
 							last_x = x;
 							last_y = y;
@@ -61,12 +63,24 @@ public class SensorsMonitor implements SensorEventListener {
 		}
 	}
 	
+	private void muteVolume(){
+		if (!isMutted){
+			audioMan.setStreamMute(AudioManager.STREAM_RING, true);
+			//audioMan.adjustStreamVolume(AudioManager.STREAM_RING, AudioManager.ADJUST_LOWER, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+			isMutted = true;
+		}
+	}
+	
 	public void resumeSensors(){
 		isWorking = true;
 	}
 	
 	public void pauseSensors(){
 		isWorking = false;
+		if (isMutted){
+			audioMan.setStreamMute(AudioManager.STREAM_RING, false);
+			isMutted = false;
+		}
 	}
 
 }
