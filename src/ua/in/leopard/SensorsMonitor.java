@@ -16,6 +16,7 @@ public class SensorsMonitor implements SensorEventListener {
 	private Context myContext;
 	private AudioManager audioMan;
 	private Boolean isMutted = false;
+	private int ringeMode;
 	
 	private long lastUpdate = -1;
 	private float x, y, z;
@@ -62,6 +63,7 @@ public class SensorsMonitor implements SensorEventListener {
 	
 	private void muteVolume(){
 		if (!isMutted){
+			ringeMode = audioMan.getRingerMode();
 			if (Settings.getVirbation(this.myContext)){
 				audioMan.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
 			} else {
@@ -73,7 +75,7 @@ public class SensorsMonitor implements SensorEventListener {
 	
 	private void unmuteVolume(){
 		if (isMutted){
-			audioMan.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+			audioMan.setRingerMode(ringeMode);
 			isMutted = false;
 		}
 	}
