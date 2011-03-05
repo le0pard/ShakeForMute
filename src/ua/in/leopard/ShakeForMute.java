@@ -91,6 +91,7 @@ public class ShakeForMute extends Activity implements OnClickListener {
 	
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
+					mySettings.setShowCalibrateHelp(true);
 					taskCalibration();
 				}
 	
@@ -104,7 +105,6 @@ public class ShakeForMute extends Activity implements OnClickListener {
 				
 			})
 			.show();
-			mySettings.setShowCalibrateHelp(true);
 		} else {
 			taskCalibration();
 		}
