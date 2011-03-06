@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+   <item android:id="@+id/menu_howto_button"
+      android:title="@string/menu_howto_label"
+      android:icon="@drawable/menu_howto_icon" />
+   <item android:id="@+id/menu_about_button"
+      android:title="@string/menu_about_label"
+      android:icon="@drawable/menu_about_icon" />
+</menu>

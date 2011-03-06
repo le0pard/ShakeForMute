@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="mainContent">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>
+    <style name="dashboard_button" parent="@style/mainContent">
+      <item name="android:layout_marginTop">0dip</item>
+      <item name="android:layout_marginBottom">0dip</item>
+      <item name="android:background">@drawable/dashboard_button_background</item>
+    </style>
+    <style name="borderOfContent">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">2dip</item>
+        <item name="android:background">@drawable/border_background</item>
+    </style>
+    <style name="topLogo">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">30dip</item>
+        <item name="android:background">@drawable/main_background</item>
+    </style>
+    <style name="checkboxBoxStyle">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/main_background</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">3dip</item>
+        <item name="android:paddingBottom">3dip</item>
+    </style>
+    <style name="checkboxStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+</resources>
