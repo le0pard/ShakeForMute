@@ -22,6 +22,6 @@
     
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     
-    <uses-sdk android:minSdkVersion="7" />
+    <uses-sdk android:minSdkVersion="6" />
 
 </manifest> 
