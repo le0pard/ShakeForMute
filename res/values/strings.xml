@@ -10,4 +10,7 @@
     
     <string name="calibrate_dialog_title">Information</string>
     <string name="calibrate_dialog_message">ShakeForMute</string>
+    
+    <string name="menu_howto_label">HowTo</string>
+    <string name="menu_about_label">About</string>
 </resources>

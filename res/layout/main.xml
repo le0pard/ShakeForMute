@@ -2,23 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:layout_margin="0dip" 
+    android:padding="0dip">
+    
+    <View style="@style/borderOfContent" />
+    
+    <ImageView android:src="@drawable/logo" 
+                style="@style/topLogo" />
+    
+    <View style="@style/borderOfContent" />
     
     <ImageButton android:id="@+id/on_off_button"
-       android:background="@drawable/dashboard_button_background"
        android:src="@drawable/dashboard_button_on_off"
        style="@style/dashboard_button" />
     
     <View style="@style/borderOfContent" />
      
     <ImageButton android:id="@+id/calibrate_button"
-       android:background="@drawable/dashboard_button_background"
        android:src="@drawable/dashboard_button_on_off"
        style="@style/dashboard_button" />
      
-    <CheckBox android:id="@+id/vibrate_checkbox"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="vibrate?" />
+    <View style="@style/borderOfContent" /> 
+    
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/checkboxBoxStyle">
+	    <CheckBox android:id="@+id/vibrate_checkbox"
+	        style="@style/checkboxStyle"
+	        android:text="vibrate?" />
+    </LinearLayout>
+        
+    <View style="@style/borderOfContent" />
 
 </LinearLayout>
