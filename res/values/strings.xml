@@ -13,4 +13,7 @@
     
     <string name="menu_howto_label">HowTo</string>
     <string name="menu_about_label">About</string>
+    
+    <string name="about_text">About text</string>
+    <string name="howto_text">Howto text</string>
 </resources>

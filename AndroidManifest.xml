@@ -13,6 +13,14 @@
             </intent-filter>
         </activity>
         
+        <activity android:name="About" android:label="@string/menu_about_label" 
+                  android:theme="@android:style/Theme.Dialog" 
+                  android:icon="@drawable/icon"></activity>
+                  
+        <activity android:name="HowTo" android:label="@string/menu_howto_label" 
+                  android:theme="@android:style/Theme.Dialog" 
+                  android:icon="@drawable/icon"></activity>
+        
 				<receiver android:name=".ServiceReceiver">
 					<intent-filter>
 					  <action android:name="android.intent.action.PHONE_STATE" />

@@ -3,6 +3,7 @@ package ua.in.leopard;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -142,10 +143,10 @@ public class ShakeForMute extends Activity implements OnClickListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
       switch (item.getItemId()) {
       	case R.id.menu_howto_button:
-         //startActivity(new Intent(this, EditPreferences.class));
+         startActivity(new Intent(this, HowTo.class));
          return true;
       	case R.id.menu_about_button:
-      	 //startActivity(new Intent(this, About.class));
+      	 startActivity(new Intent(this, About.class));
       	 return true;
       	default:
 	     return super.onOptionsItemSelected(item);
