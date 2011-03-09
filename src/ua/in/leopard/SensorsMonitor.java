@@ -6,6 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
+import android.util.Log;
 
 public class SensorsMonitor implements SensorEventListener {
 	
@@ -15,8 +16,8 @@ public class SensorsMonitor implements SensorEventListener {
 	private final Sensor mAccelerometer;
 	private Context myContext;
 	private AudioManager audioMan;
+	private Boolean isListener = false;
 	private Boolean isMutted = false;
-	private int ringeMode;
 	
 	private long lastUpdate = -1;
 	private float x, y, z;
@@ -27,6 +28,7 @@ public class SensorsMonitor implements SensorEventListener {
 		mSensorManager = (SensorManager) this.myContext.getSystemService(Context.SENSOR_SERVICE);
 		mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		audioMan = (AudioManager) this.myContext.getSystemService(Context.AUDIO_SERVICE);
+		mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 	}
 
 	@Override
@@ -36,7 +38,7 @@ public class SensorsMonitor implements SensorEventListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (Settings.getOnOffStatus(this.myContext)){
+		if (Settings.getOnOffStatus(this.myContext) && isListener){
 			synchronized (this) {
 		        switch (event.sensor.getType()){
 		            case Sensor.TYPE_ACCELEROMETER:
@@ -62,30 +64,29 @@ public class SensorsMonitor implements SensorEventListener {
 	}
 	
 	private void muteVolume(){
-		if (!isMutted){
-			ringeMode = audioMan.getRingerMode();
+		if (!isMutted && audioMan.getRingerMode() == AudioManager.RINGER_MODE_NORMAL){
+			isMutted = true;
 			if (Settings.getVirbation(this.myContext)){
 				audioMan.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
 			} else {
 				audioMan.setRingerMode(AudioManager.RINGER_MODE_SILENT);
 			}
-			isMutted = true;
 		}
 	}
 	
 	private void unmuteVolume(){
 		if (isMutted){
-			audioMan.setRingerMode(ringeMode);
 			isMutted = false;
+			audioMan.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 		}
 	}
 	
 	public void resumeSensors(){
-		mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+		isListener = true;
 	}
 	
 	public void pauseSensors(){
-		mSensorManager.unregisterListener(this);
+		isListener = false;
 		this.unmuteVolume();
 	}
 

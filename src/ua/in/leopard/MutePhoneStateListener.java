@@ -21,10 +21,6 @@ public class MutePhoneStateListener extends PhoneStateListener {
 	    	case TelephonyManager.CALL_STATE_RINGING:
 	    		this.mySensorsMonitor.resumeSensors();
 	    		break;
-	    	case TelephonyManager.CALL_STATE_OFFHOOK:
-	    	case TelephonyManager.CALL_STATE_IDLE:
-	    		this.mySensorsMonitor.pauseSensors();
-	    		break;
 	    	default:
 	    		this.mySensorsMonitor.pauseSensors();
 	    }

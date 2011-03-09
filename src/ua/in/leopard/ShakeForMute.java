@@ -37,7 +37,7 @@ public class ShakeForMute extends Activity implements OnClickListener {
         vibrateCheckbox = (CheckBox) findViewById(R.id.vibrate_checkbox);
         vibrateCheckbox.setOnClickListener(this);
         
-        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        this.setVolumeControlStream(AudioManager.STREAM_RING);
     }
     
     private void restoreBackgroudCalibrate(){
