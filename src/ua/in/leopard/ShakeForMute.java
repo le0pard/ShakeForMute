@@ -77,7 +77,30 @@ public class ShakeForMute extends Activity implements OnClickListener {
 			 updateView();
 	         break;
 		  case R.id.calibrate_button:
-			 startCalibration();
+			 if (mySettings.getOnOffStatus()){
+				 startCalibration();
+			 } else {
+				 new AlertDialog.Builder(this)
+					.setTitle(getString(R.string.calibrate_off_title))
+					.setMessage(getString(R.string.calibrate_off_message))
+					.setNeutralButton(getString(R.string.ok_button), new DialogInterface.OnClickListener() {
+			
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// do nothing – it will close on its own
+						}
+			
+					})
+					.setOnCancelListener(new DialogInterface.OnCancelListener() {
+			
+						@Override
+						public void onCancel(DialogInterface dialog) {
+							// do nothing – it will close on its own
+						}
+						
+					})
+					.show();
+			 }
 	         break;
 		  case R.id.vibrate_checkbox:
 			 mySettings.setVirbation(((CheckBox) v).isChecked());
@@ -124,8 +147,10 @@ public class ShakeForMute extends Activity implements OnClickListener {
 	private void updateView(){
 		if (mySettings.getOnOffStatus()){
 			onOffButton.setImageResource(R.drawable.dashboard_button_on_off);
+			calibrateButton.setImageResource(R.drawable.dashboard_button_calibrate_on);
 		} else {
 			onOffButton.setImageResource(R.drawable.dashboard_button_off_on);
+			calibrateButton.setImageResource(R.drawable.dashboard_button_calibrate_off);
 		}
 		
 		vibrateCheckbox.setChecked(mySettings.getVirbation());

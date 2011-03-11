@@ -5,15 +5,22 @@
     <string name="ok_button">Ok</string>
     <string name="cancel_button">Cancel</string>
     
-    <string name="calibrate_help_title">Information</string>
-    <string name="calibrate_help_msg">ShakeForMute</string>
+    <string name="calibrate_help_title">How to calibrate</string>
+    <string name="calibrate_help_msg">To calibrate the sensitivity of the shake-up phone until you hear a beep. For information: too small amplitude will be ignore, because the phone can create it by the vibration on the call.</string>
     
-    <string name="calibrate_dialog_title">Information</string>
-    <string name="calibrate_dialog_message">ShakeForMute</string>
+    <string name="calibrate_dialog_title">Calibration</string>
+    <string name="calibrate_dialog_message">Shake you phone...</string>
     
-    <string name="menu_howto_label">HowTo</string>
+    <string name="calibrate_off_title">Warning</string>
+    <string name="calibrate_off_message">For calibration you must switch on the program. Just click to button for state ON</string>
+    
+    <string name="checkbox_vibrate_label">Vibrate when call phone?</string>
+    
+    <string name="menu_howto_label">How To</string>
+    <string name="howto_text">The phone rang at the wrong time and in your head only one thought - how to mute it as soon as possible? Shake the phone, pop in a pocket or shake the bag - make phone silent for a moment!</string>
+    
+    
     <string name="menu_about_label">About</string>
-    
-    <string name="about_text">About text</string>
-    <string name="howto_text">Howto text</string>
+    <string name="about_text">Development: Alexey Vasiliev\nDesign: Timur Prokopiev</string>
+
 </resources>
