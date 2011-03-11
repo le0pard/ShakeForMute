@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ShakeForMute</string>
+    <string name="app_name"><![CDATA[Shake&Mute]]></string>
     
     <string name="ok_button">Ok</string>
     <string name="cancel_button">Cancel</string>
