@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name"><![CDATA[Shake&Mute]]></string>
+    
+    <string name="ok_button">Ok</string>
+    <string name="cancel_button">Отмена</string>
+    
+    <string name="calibrate_help_title">Как калибровать</string>
+    <string name="calibrate_help_msg">Для калибровки чувствительности встряхните телефон, пока не услышите звуковой сигнал. Для информации: слишком малая амплитуда встряски будет игнорирована, поскольку телефон может сам создавать встряску с помощью вибрации при вызове.</string>
+    
+    <string name="calibrate_dialog_title">Калибровка</string>
+    <string name="calibrate_dialog_message">Потрясите телефон...</string>
+    
+    <string name="calibrate_off_title">Внимание</string>
+    <string name="calibrate_off_message">Для калибровки нужно включить программу. Для это достаточно нажать на кнопку ВКЛ</string>
+    
+    <string name="checkbox_vibrate_label">Вибрировать при тел. вызове?</string>
+    
+    <string name="menu_howto_label">Что это?</string>
+    <string name="howto_text"><![CDATA[Shake&Mute - это приложение, позволяющее отключить звонок телефона во время входящего вызова простым встряхиванием или шлепком. Вы можете потрясти сумку, в которой лежит телефон или хлопнуть по карману. Чувствительность сенсора настраивается калибровкой.]]></string>
+    
+    
+    <string name="menu_about_label">Про нас</string>
+    <string name="about_text">Разработка: Алексей Васильев\nДизайн: Тимур Прокопьев</string>
+
+</resources>

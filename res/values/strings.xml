@@ -17,7 +17,7 @@
     <string name="checkbox_vibrate_label">Vibrate when call phone?</string>
     
     <string name="menu_howto_label">How To</string>
-    <string name="howto_text">The phone rang at the wrong time and in your head only one thought - how to mute it as soon as possible? Shake the phone, pop in a pocket or shake the bag - make phone silent for a moment!</string>
+    <string name="howto_text"><![CDATA[Shake&Mute - is an application that allows you to disable the phone ring during an incoming call, simply shake or slap. You can shake the bag, which contains the phone or slam on the pocket. Sensor sensitivity adjustable by calibration.]]></string>
     
     
     <string name="menu_about_label">About</string>
