@@ -2,7 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="ua.in.leopard"
       android:versionCode="1"
-      android:versionName="1.0">
+      android:versionName="1.0"
+      android:installLocation="internalOnly">
+    
+    <supports-screens
+	    android:largeScreens="true"
+	    android:normalScreens="true"
+	    android:smallScreens="true"
+	    android:anyDensity="true"
+    />   
+    
     <application android:icon="@drawable/icon" android:label="@string/app_name">
         <activity android:name=".ShakeForMute"
                   android:label="@string/app_name" 
