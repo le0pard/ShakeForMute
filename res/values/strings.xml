@@ -21,6 +21,6 @@
     
     
     <string name="menu_about_label">About</string>
-    <string name="about_text">Development: Alexey Vasiliev\nDesign: Timur Prokopiev</string>
+    <string name="about_text"><![CDATA[Development: Alexey Vasiliev\nDesign: Timur Prokopiev\nFor bugs and proposition:\npopcornua.by.leo@gmail.com]]></string>
 
 </resources>

@@ -21,6 +21,6 @@
     
     
     <string name="menu_about_label">Про нас</string>
-    <string name="about_text">Разработка: Алексей Васильев\nДизайн: Тимур Прокопьев</string>
+    <string name="about_text">Разработка: Алексей Васильев\nДизайн: Тимур Прокопьев\nДля багов и предложений: popcornua.by.leo@gmail.com</string>
 
 </resources>
