@@ -14,12 +14,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 
-public class ShakeForMute extends Activity implements OnClickListener {
+public class ShakeForMute extends Activity implements OnClickListener, SeekBar.OnSeekBarChangeListener {
 	private Settings mySettings;
 	private ImageButton onOffButton, calibrateButton;
 	private CalibrateTask calibrateTask;
 	private CheckBox vibrateCheckbox;
+	private SeekBar calibrateSeekBar;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class ShakeForMute extends Activity implements OnClickListener {
         calibrateButton.setOnClickListener(this);
         vibrateCheckbox = (CheckBox) findViewById(R.id.vibrate_checkbox);
         vibrateCheckbox.setOnClickListener(this);
+        calibrateSeekBar = (SeekBar) findViewById(R.id.seekbar_calibration);
+        calibrateSeekBar.setOnSeekBarChangeListener(this);
         
         this.setVolumeControlStream(AudioManager.STREAM_RING);
     }
@@ -176,6 +180,25 @@ public class ShakeForMute extends Activity implements OnClickListener {
       	default:
 	     return super.onOptionsItemSelected(item);
       }
+	}
+
+	@Override
+	public void onProgressChanged(SeekBar seekBar, int progress,
+			boolean fromUser) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStartTrackingTouch(SeekBar seekBar) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStopTrackingTouch(SeekBar seekBar) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

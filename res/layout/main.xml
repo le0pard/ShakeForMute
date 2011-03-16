@@ -22,6 +22,19 @@
     <View style="@style/border_of_content" /> 
     
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/seekbar_box_style">
+      <SeekBar android:id="@+id/seekbar_calibration"
+               android:max="2000"
+				       android:progress="0"
+				       android:secondaryProgress="0"
+				       android:progressDrawable="@drawable/seekbar_progress"
+				       android:thumb="@drawable/seek_thumb"
+               style="@style/seekbar_style" />
+    </LinearLayout>
+    
+    <View style="@style/border_of_content" /> 
+    
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/checkbox_box_style">
 	    <CheckBox android:id="@+id/vibrate_checkbox"
 	        style="@style/checkbox_style"

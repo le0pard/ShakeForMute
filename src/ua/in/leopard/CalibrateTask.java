@@ -8,6 +8,7 @@ public class CalibrateTask extends AsyncTask<Void, String, Void> {
 	
 	private Context myContext;
 	private ProgressDialog pd;
+	public static int MIN_CALIBRATE_VALUE = 400;
 	
 	public CalibrateTask(Context myContext) {
 		this.myContext = myContext;
@@ -38,7 +39,7 @@ public class CalibrateTask extends AsyncTask<Void, String, Void> {
 		}
 		calibrateSens.stopCalibration();
 		float newCalibrateValue = calibrateSens.getMaxShake();
-		if (newCalibrateValue > 400){
+		if (newCalibrateValue > MIN_CALIBRATE_VALUE){
 			Settings mySettings = new Settings(this.myContext);
 			int newValue = 0;
 			if (newCalibrateValue > 1000){
