@@ -14,6 +14,10 @@
     <string name="calibrate_off_title">Увага</string>
     <string name="calibrate_off_message">Для калібрування потрібно включити програму. Для це досить натиснути на кнопку ВКЛ</string>
     
+    <string name="seekbar_low">Висока</string>
+    <string name="seekbar_sensitivity">чутливість</string>
+    <string name="seekbar_high">Низька</string>
+    
     <string name="checkbox_vibrate_label">Вібрувати при тел. виклик?</string>
     
     <string name="menu_howto_label">Що це?</string>

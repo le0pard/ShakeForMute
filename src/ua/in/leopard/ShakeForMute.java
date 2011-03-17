@@ -148,7 +148,7 @@ public class ShakeForMute extends Activity implements OnClickListener, SeekBar.O
 		}
 	}
 	
-	private void updateView(){
+	public void updateView(){
 		if (mySettings.getOnOffStatus()){
 			onOffButton.setImageResource(R.drawable.dashboard_button_on_off);
 			calibrateButton.setImageResource(R.drawable.dashboard_button_calibrate_on);
@@ -158,6 +158,7 @@ public class ShakeForMute extends Activity implements OnClickListener, SeekBar.O
 		}
 		
 		vibrateCheckbox.setChecked(mySettings.getVirbation());
+		calibrateSeekBar.setProgress(mySettings.getShakeThresholdForSeekBar());
 	}
 	
 	@Override
@@ -185,8 +186,7 @@ public class ShakeForMute extends Activity implements OnClickListener, SeekBar.O
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress,
 			boolean fromUser) {
-		// TODO Auto-generated method stub
-		
+		mySettings.setShakeThresholdFromSeekBar(progress);
 	}
 
 	@Override

@@ -14,6 +14,10 @@
     <string name="calibrate_off_title">Warning</string>
     <string name="calibrate_off_message">For calibration you must switch on the program. Just click to button for state ON</string>
     
+    <string name="seekbar_low">High</string>
+    <string name="seekbar_sensitivity">sensitivity</string>
+    <string name="seekbar_high">Low</string>
+    
     <string name="checkbox_vibrate_label">Vibrate when call phone?</string>
     
     <string name="menu_howto_label">How To</string>

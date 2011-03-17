@@ -57,6 +57,18 @@ public class Settings {
 	   return PreferenceManager.getDefaultSharedPreferences(context).getInt(OPT_SHAKE_THRESHOLD, OPT_SHAKE_THRESHOLD_DEF);
     }
 	
+	public int getShakeThresholdForSeekBar() {
+	   int ret_val = this.getShakeThreshold() - CalibrateTask.MIN_CALIBRATE_VALUE;
+	   if (ret_val < 0){
+		   ret_val = 0;
+	   }
+	   return ret_val;
+    }
+	
+	public void setShakeThresholdFromSeekBar(int progress){
+		this.setShakeThreshold(progress + CalibrateTask.MIN_CALIBRATE_VALUE);
+	}
+	
 	public void setVirbation(Boolean status){
 		SharedPreferences.Editor editor = prefs.edit();
 		editor.putBoolean(OPT_VIBRATION, status);

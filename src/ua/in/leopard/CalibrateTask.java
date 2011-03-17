@@ -3,12 +3,13 @@ package ua.in.leopard;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 public class CalibrateTask extends AsyncTask<Void, String, Void> {
 	
 	private Context myContext;
 	private ProgressDialog pd;
-	public static int MIN_CALIBRATE_VALUE = 400;
+	public static int MIN_CALIBRATE_VALUE = 300;
 	
 	public CalibrateTask(Context myContext) {
 		this.myContext = myContext;
@@ -25,6 +26,7 @@ public class CalibrateTask extends AsyncTask<Void, String, Void> {
 	
 	@Override
     protected void onPreExecute() {
+		Log.d("HHAAAAAAAAAAAA", Integer.toString(Settings.getShakeThreshold(this.myContext)));
 		this.pd = ProgressDialog.show(this.myContext, this.myContext.getString(R.string.calibrate_dialog_title), this.myContext.getString(R.string.calibrate_dialog_message), true, false);
     }
 	
@@ -39,6 +41,7 @@ public class CalibrateTask extends AsyncTask<Void, String, Void> {
 		}
 		calibrateSens.stopCalibration();
 		float newCalibrateValue = calibrateSens.getMaxShake();
+		Log.d("HHAAAAAAAAAAAA111", Float.toString(newCalibrateValue));
 		if (newCalibrateValue > MIN_CALIBRATE_VALUE){
 			Settings mySettings = new Settings(this.myContext);
 			int newValue = 0;
@@ -77,6 +80,7 @@ public class CalibrateTask extends AsyncTask<Void, String, Void> {
 		}
 		BeepManager beep = new BeepManager(this.myContext);
 		beep.playBeep();
+		((ShakeForMute) this.myContext).updateView();
 	}
 
 }

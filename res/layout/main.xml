@@ -22,6 +22,7 @@
     <View style="@style/border_of_content" /> 
     
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     style="@style/seekbar_box_style">
       <SeekBar android:id="@+id/seekbar_calibration"
                android:max="2000"
@@ -30,6 +31,18 @@
 				       android:progressDrawable="@drawable/seekbar_progress"
 				       android:thumb="@drawable/seek_thumb"
                style="@style/seekbar_style" />
+      <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/seekbar_info_box_style"
+        android:orientation="horizontal">
+        <TextView android:text="@string/seekbar_low"
+					style="@style/seekbar_info_style" />
+				<TextView android:text="@string/seekbar_sensitivity"
+          style="@style/seekbar_info_style"
+          android:gravity="center" />
+			  <TextView android:text="@string/seekbar_high"
+          style="@style/seekbar_info_style"
+          android:gravity="right" />
+      </LinearLayout>
     </LinearLayout>
     
     <View style="@style/border_of_content" /> 
