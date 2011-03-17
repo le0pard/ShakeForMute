@@ -36,13 +36,15 @@
 		    style="@style/seekbar_info_box_style">
 		    <TableRow>
 	        <TextView android:text="@string/seekbar_low"
-						style="@style/seekbar_info_style" />
+						style="@style/seekbar_info_style"
+						android:textColor="@color/seek_info_low" />
           <TextView android:text="@string/seekbar_strength"
           style="@style/seekbar_info_style"
           android:gravity="center" />
           <TextView android:text="@string/seekbar_high"
           style="@style/seekbar_info_style"
-          android:gravity="right" />
+          android:gravity="right"
+          android:textColor="@color/seek_info_high" />
         </TableRow>
       </TableLayout>
     </LinearLayout>

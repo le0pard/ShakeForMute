@@ -14,9 +14,9 @@
     <string name="calibrate_off_title">Увага</string>
     <string name="calibrate_off_message">Для калібрування потрібно включити програму. Для це досить натиснути на кнопку ВКЛ</string>
     
-    <string name="seekbar_low">Низька</string>
+    <string name="seekbar_low">низька</string>
     <string name="seekbar_strength">сила струшування</string>
-    <string name="seekbar_high">Висока</string>
+    <string name="seekbar_high">висока</string>
     
     <string name="checkbox_vibrate_label">Вібрувати при тел. виклик?</string>
     

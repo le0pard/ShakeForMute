@@ -14,9 +14,9 @@
     <string name="calibrate_off_title">Warning</string>
     <string name="calibrate_off_message">For calibration you must switch on the program. Just click to button for state ON</string>
     
-    <string name="seekbar_low">Low</string>
+    <string name="seekbar_low">low</string>
     <string name="seekbar_strength">strength of shaking</string>
-    <string name="seekbar_high">High</string>
+    <string name="seekbar_high">high</string>
     
     <string name="checkbox_vibrate_label">Vibrate when call phone?</string>
     
