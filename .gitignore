@@ -1,6 +1,6 @@
 .git
 bin
-gen
+gen/*
 *~
 .settings
 .DS_Store
