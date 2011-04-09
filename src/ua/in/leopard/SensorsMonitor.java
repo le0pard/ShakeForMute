@@ -16,7 +16,6 @@ public class SensorsMonitor implements SensorEventListener {
 	private final Sensor mAccelerometer;
 	private Context myContext;
 	private AudioManager audioMan;
-	private Boolean isListener = false;
 	private Boolean isMutted = false;
 	
 	private long lastUpdate = -1;
@@ -28,7 +27,6 @@ public class SensorsMonitor implements SensorEventListener {
 		mSensorManager = (SensorManager) this.myContext.getSystemService(Context.SENSOR_SERVICE);
 		mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		audioMan = (AudioManager) this.myContext.getSystemService(Context.AUDIO_SERVICE);
-		mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 	}
 
 	@Override
@@ -38,7 +36,7 @@ public class SensorsMonitor implements SensorEventListener {
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
-		if (Settings.getOnOffStatus(this.myContext) && isListener){
+		if (Settings.getOnOffStatus(this.myContext)){
 			synchronized (this) {
 		        switch (event.sensor.getType()){
 		            case Sensor.TYPE_ACCELEROMETER:
@@ -82,11 +80,11 @@ public class SensorsMonitor implements SensorEventListener {
 	}
 	
 	public void resumeSensors(){
-		isListener = true;
+		mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 	}
 	
 	public void pauseSensors(){
-		isListener = false;
+		mSensorManager.unregisterListener(this);
 		this.unmuteVolume();
 	}
 
